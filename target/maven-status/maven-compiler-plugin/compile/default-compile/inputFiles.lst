@@ -1,0 +1,9 @@
+/Users/zanchetta/eclipse-workspace/trip/src/main/java/br/com/trip/handler/GetTripRecordsByPeriod.java
+/Users/zanchetta/eclipse-workspace/trip/src/main/java/br/com/trip/dao/TripRepository.java
+/Users/zanchetta/eclipse-workspace/trip/src/main/java/br/com/trip/dao/DynamoDBManager.java
+/Users/zanchetta/eclipse-workspace/trip/src/main/java/br/com/trip/model/HandlerRequest.java
+/Users/zanchetta/eclipse-workspace/trip/src/main/java/br/com/trip/model/HandlerResponse.java
+/Users/zanchetta/eclipse-workspace/trip/src/main/java/br/com/trip/handler/CreateTripRecord.java
+/Users/zanchetta/eclipse-workspace/trip/src/main/java/br/com/trip/handler/GetTripRecordsByCity.java
+/Users/zanchetta/eclipse-workspace/trip/src/main/java/br/com/trip/model/Trip.java
+/Users/zanchetta/eclipse-workspace/trip/src/main/java/br/com/trip/handler/GetTripRecordsByCountry.java
