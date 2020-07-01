@@ -64,7 +64,7 @@ Resources:
        GetStudyRecordsByCountry:
          Type: Api
          Properties:
-           Path: /study/{country}
+           Path: /trip/{country}
            Method: get
 #           RequestParameters:
 #              - method.request.querystring.tag
@@ -113,8 +113,16 @@ Resources:
             - AttributeName: city
               KeyType: RANGE
           Projection:
+             ProjectionType: ALL 
+        - IndexName: reasonIndex
+          KeySchema: 
+            - AttributeName: country
+              KeyType: HASH
+            - AttributeName: reason
+              KeyType: RANGE
+          Projection:
              ProjectionType: ALL       
-      BillingMode: PAY_PER_REQUEST              
+      BillingMode: PAY_PER_REQUEST             
 
 Outputs:
 
@@ -126,7 +134,7 @@ Outputs:
       Description: "GetTripRecordsByPeriod Lambda Function ARN"
       Value: !GetAtt GetTripRecordsByPeriodFunction.Arn
       
-    GetTripRecordsByCountry:
+    GetTripRecordsByCountryFunction:
       Description: "GetTripRecordsByCountry Lambda Function ARN"
       Value: !GetAtt GetTripRecordsByCountryFunction.Arn
       
