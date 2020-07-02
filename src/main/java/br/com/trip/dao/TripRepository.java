@@ -7,6 +7,7 @@ import java.util.Map;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBQueryExpression;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 
 import br.com.trip.model.Trip;
@@ -26,12 +27,16 @@ public class TripRepository {
 		eav.put(":val1", new AttributeValue().withS(start));
 		eav.put(":val2", new AttributeValue().withS(end));
 		
-		final DynamoDBQueryExpression<Trip> queryExpression = new DynamoDBQueryExpression<Trip>()
-				.withKeyConditionExpression("date between :val1 and :val2")
+//		final DynamoDBQueryExpression<Trip> queryExpression = new DynamoDBQueryExpression<Trip>()
+//				.withKeyConditionExpression("date between :val1 and :val2")
+//				.withExpressionAttributeValues(eav);
+		
+		final DynamoDBScanExpression scanExpression = new DynamoDBScanExpression()
+				.withFilterExpression("date between :val1 and :val2")
 				.withExpressionAttributeValues(eav);
 		
 		final List<Trip> trips = new ArrayList<Trip>();
-		trips.addAll(mapper.query(Trip.class, queryExpression));
+		trips.addAll(mapper.scan(Trip.class, scanExpression));
 
 		return trips;
 	}
