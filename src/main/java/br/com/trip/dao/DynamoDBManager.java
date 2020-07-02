@@ -15,7 +15,7 @@ public class DynamoDBManager {
 		final String endpoint = System.getenv("ENDPOINT_OVERRIDE");
 		
         if (endpoint != null && !endpoint.isEmpty()) {
-        	EndpointConfiguration endpointConfiguration = new EndpointConfiguration(endpoint, "us-east-1");
+        	EndpointConfiguration endpointConfiguration = new EndpointConfiguration(endpoint, "us-east-2");
         	ddb = AmazonDynamoDBClientBuilder.standard().withEndpointConfiguration(endpointConfiguration).build();
         } else {
         	ddb = AmazonDynamoDBClientBuilder.defaultClient();

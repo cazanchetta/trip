@@ -18,7 +18,7 @@ public class Trip {
 	@DynamoDBRangeKey(attributeName = "date")
 	private String date;
 	
-	@DynamoDBIndexRangeKey(attributeName = "reason", localSecondaryIndexName = "reasonIndex")
+	@DynamoDBAttribute(attributeName = "reason")
 	private String reason;
 
 	public Trip(String country, String city, String date, String reason) {

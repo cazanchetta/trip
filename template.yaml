@@ -66,8 +66,6 @@ Resources:
          Properties:
            Path: /trip/{country}
            Method: get
-#           RequestParameters:
-#              - method.request.querystring.tag
 
   GetTripRecordsByCityFunction:
     Type: AWS::Serverless::Function
@@ -98,8 +96,6 @@ Resources:
           AttributeType: S
         - AttributeName: date
           AttributeType: S
-        - AttributeName: reason
-          AttributeType: S            
       KeySchema:
         - AttributeName: country
           KeyType: HASH
@@ -113,15 +109,7 @@ Resources:
             - AttributeName: city
               KeyType: RANGE
           Projection:
-             ProjectionType: ALL 
-        - IndexName: reasonIndex
-          KeySchema: 
-            - AttributeName: country
-              KeyType: HASH
-            - AttributeName: reason
-              KeyType: RANGE
-          Projection:
-             ProjectionType: ALL       
+             ProjectionType: ALL      
       BillingMode: PAY_PER_REQUEST             
 
 Outputs:
