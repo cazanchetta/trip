@@ -8,61 +8,60 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
 @DynamoDBTable(tableName = "trip")
 public class Trip {
-	
-	@DynamoDBHashKey(attributeName = "country")
-	private String country;
-	
-	@DynamoDBIndexRangeKey(attributeName = "city", localSecondaryIndexName = "cityIndex")
-	private String city;
-	
-	@DynamoDBRangeKey(attributeName = "date")
-	private String date;
-	
-	@DynamoDBAttribute(attributeName = "reason")
-	private String reason;
+    @DynamoDBHashKey(attributeName = "country")
+    private String country;
 
-	public Trip(String country, String city, String date, String reason) {
-		super();
-		this.country = country;
-		this.city = city;
-		this.date = date;
-		this.reason = reason;
-	}
+    @DynamoDBIndexRangeKey(attributeName = "city", localSecondaryIndexName = "cityIndex")
+    private String city;
 
-	public Trip() {
-		super();
-	}
+    @DynamoDBRangeKey(attributeName = "date")
+    private String date;
 
-	public String getCountry() {
-		return country;
-	}
+    @DynamoDBAttribute(attributeName = "reason")
+    private String reason;
 
-	public void setCountry(String country) {
-		this.country = country;
-	}
+    public Trip(String country, String city, String date, String reason) {
+        super();
+        this.country = country;
+        this.city = city;
+        this.date = date;
+        this.reason = reason;
+    }
 
-	public String getCity() {
-		return city;
-	}
+    public Trip() {
+        super();
+    }
 
-	public void setCity(String city) {
-		this.city = city;
-	}
+    public String getCountry() {
+        return country;
+    }
 
-	public String getDate() {
-		return date;
-	}
+    public void setCountry(String country) {
+        this.country = country;
+    }
 
-	public void setDate(String date) {
-		this.date = date;
-	}
+    public String getCity() {
+        return city;
+    }
 
-	public String getReason() {
-		return reason;
-	}
+    public void setCity(String city) {
+        this.city = city;
+    }
 
-	public void setReason(String reason) {
-		this.reason = reason;
-	}
-	
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+
 }

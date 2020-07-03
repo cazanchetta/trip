@@ -11,18 +11,16 @@ import br.com.trip.model.HandlerResponse;
 import br.com.trip.model.Trip;
 
 public class GetTripRecordsByPeriod implements RequestHandler<HandlerRequest, HandlerResponse> {
+    private final TripRepository repository = new TripRepository();
 
-	private final TripRepository repository = new TripRepository();
-	
-	public HandlerResponse handleRequest(HandlerRequest request, Context context) {
+    public HandlerResponse handleRequest(HandlerRequest request, Context context) {
+        final String start = request.getQueryStringParameters().get("start");
+        final String end = request.getQueryStringParameters().get("end");
 
-		final String start = request.getQueryStringParameters().get("start");
-		final String end = request.getQueryStringParameters().get("end");
+        context.getLogger().log("Procurando por Trips entre  " + start + " and " + end);
 
-		context.getLogger().log("Procurando por Trips entre  " + start + " and " + end);
+        final List<Trip> trips = this.repository.findByPeriod(start, end);
 
-		final List<Trip> trips = this.repository.findByPeriod(start, end);
-		
-		return HandlerResponse.builder().setStatusCode(200).setObjectBody(trips).build();
-	}
+        return HandlerResponse.builder().setStatusCode(200).setObjectBody(trips).build();
+    }
 }

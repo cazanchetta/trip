@@ -1,18 +1,18 @@
 {
-	"CreateTripRecordFunction": {
-		"ENDPOINT_OVERRIDE": "http://127.0.0.1:8000",
-		"TABLE_NAME": "trip"
-	},
-	"GetTripRecordsByPeriodFunction": {
-		"ENDPOINT_OVERRIDE": "http://127.0.0.1:8000",
-		"TABLE_NAME": "trip"
-	},
-	"GetTripRecordsByCountryFunction": {
-		"ENDPOINT_OVERRIDE": "http://127.0.0.1:8000",
-		"TABLE_NAME": "trip"
-	},
-	"GetTripRecordsByCityFunction": {
-		"ENDPOINT_OVERRIDE": "http://127.0.0.1:8000",
-		"TABLE_NAME": "trip"
-	}
+  "CreateTripRecordFunction": {
+    "ENDPOINT_OVERRIDE": "http://127.0.0.1:8000",
+    "TABLE_NAME": "trip"
+  },
+  "GetTripRecordsByPeriodFunction": {
+    "ENDPOINT_OVERRIDE": "http://127.0.0.1:8000",
+    "TABLE_NAME": "trip"
+  },
+  "GetTripRecordsByCountryFunction": {
+    "ENDPOINT_OVERRIDE": "http://127.0.0.1:8000",
+    "TABLE_NAME": "trip"
+  },
+  "GetTripRecordsByCityFunction": {
+    "ENDPOINT_OVERRIDE": "http://127.0.0.1:8000",
+    "TABLE_NAME": "trip"
+  }
 }

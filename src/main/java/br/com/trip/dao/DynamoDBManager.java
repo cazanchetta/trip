@@ -6,26 +6,24 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 
 public class DynamoDBManager {
+    private static DynamoDBMapper mapper;
 
-	private static DynamoDBMapper mapper;
+    static {
+        AmazonDynamoDB ddb = null;
+        final String endpoint = System.getenv("ENDPOINT_OVERRIDE");
 
-	static {
-		
-		AmazonDynamoDB ddb = null;
-		final String endpoint = System.getenv("ENDPOINT_OVERRIDE");
-		
         if (endpoint != null && !endpoint.isEmpty()) {
-        	EndpointConfiguration endpointConfiguration = new EndpointConfiguration(endpoint, "us-east-2");
-        	ddb = AmazonDynamoDBClientBuilder.standard().withEndpointConfiguration(endpointConfiguration).build();
+            EndpointConfiguration endpointConfiguration = new EndpointConfiguration(endpoint, "us-east-2");
+            ddb = AmazonDynamoDBClientBuilder.standard().withEndpointConfiguration(endpointConfiguration).build();
         } else {
-        	ddb = AmazonDynamoDBClientBuilder.defaultClient();
+            ddb = AmazonDynamoDBClientBuilder.defaultClient();
         }
 
-		mapper = new DynamoDBMapper(ddb);
-	}
+        mapper = new DynamoDBMapper(ddb);
+    }
 
-	public static DynamoDBMapper mapper() {
-		return DynamoDBManager.mapper;
-	}
+    public static DynamoDBMapper mapper() {
+        return DynamoDBManager.mapper;
+    }
 
 }

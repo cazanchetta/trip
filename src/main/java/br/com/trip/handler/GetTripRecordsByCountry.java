@@ -11,22 +11,19 @@ import br.com.trip.model.HandlerResponse;
 import br.com.trip.model.Trip;
 
 public class GetTripRecordsByCountry implements RequestHandler<HandlerRequest, HandlerResponse> {
+    private final TripRepository repository = new TripRepository();
 
-	private final TripRepository repository = new TripRepository();
+    public HandlerResponse handleRequest(HandlerRequest request, Context context) {
+        final String country = request.getPathParameters().get("country");
 
-	public HandlerResponse handleRequest(HandlerRequest request, Context context) {
+        context.getLogger().log("Procurando por Trips no país " + country);
 
-		final String country = request.getPathParameters().get("country");
+        final List<Trip> trips = this.repository.findByCountry(country);
 
-		context.getLogger()
-				.log("Procurando por Trips no país " + country);
-		
-		final List<Trip> trips = this.repository.findByCountry(country);
+        if (trips == null || trips.isEmpty()) {
+            return HandlerResponse.builder().setStatusCode(404).build();
+        }
 
-		if (trips == null || trips.isEmpty()) {
-			return HandlerResponse.builder().setStatusCode(404).build();
-		}
-
-		return HandlerResponse.builder().setStatusCode(200).setObjectBody(trips).build();
-	}
+        return HandlerResponse.builder().setStatusCode(200).setObjectBody(trips).build();
+    }
 }

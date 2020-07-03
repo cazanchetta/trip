@@ -13,62 +13,54 @@ import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import br.com.trip.model.Trip;
 
 public class TripRepository {
-	
-	private static final DynamoDBMapper mapper = DynamoDBManager.mapper();
-	
-	public Trip save(Trip trip) {
-		mapper.save(trip);
-		return trip;
-	}
-	
-	public List<Trip> findByPeriod(final String start, final String end){
-		
-		final Map<String, AttributeValue> eav = new HashMap<String, AttributeValue>();
-		eav.put(":val1", new AttributeValue().withS(start));
-		eav.put(":val2", new AttributeValue().withS(end));
-		
-//		final DynamoDBQueryExpression<Trip> queryExpression = new DynamoDBQueryExpression<Trip>()
-//				.withKeyConditionExpression("date between :val1 and :val2")
-//				.withExpressionAttributeValues(eav);
-		
-		final DynamoDBScanExpression scanExpression = new DynamoDBScanExpression()
-				.withFilterExpression("date between :val1 and :val2")
-				.withExpressionAttributeValues(eav);
-		
-		final List<Trip> trips = new ArrayList<Trip>();
-		trips.addAll(mapper.scan(Trip.class, scanExpression));
+    private static final DynamoDBMapper mapper = DynamoDBManager.mapper();
 
-		return trips;
-	}
-	
-	public List<Trip> findByCountry(final String country) {
-		
-		final Map<String, AttributeValue> eav = new HashMap<String, AttributeValue>();
-		eav.put(":val1", new AttributeValue().withS(country));
-		
-		final DynamoDBQueryExpression<Trip> queryExpression = new DynamoDBQueryExpression<Trip>()
-				.withKeyConditionExpression("country = :val1")
-				.withExpressionAttributeValues(eav);
-		
-		final List<Trip> trips = mapper.query(Trip.class, queryExpression);
+    public Trip save(Trip trip) {
+        mapper.save(trip);
 
-		return trips;		
-	}
-	
-	public List<Trip> findByCity(final String country, final String city) {
-		
-		final Map<String, AttributeValue> eav = new HashMap<String, AttributeValue>();
-		eav.put(":val1", new AttributeValue().withS(country));
-		eav.put(":val2", new AttributeValue().withS(city));
-		
-		final DynamoDBQueryExpression<Trip> queryExpression = new DynamoDBQueryExpression<Trip>()
-				.withKeyConditionExpression("country = :val1 and city = :val2")
-				.withExpressionAttributeValues(eav);
-		
-		final List<Trip> trips = mapper.query(Trip.class, queryExpression);
-		
-		return trips;
-		
-	}
+        return trip;
+    }
+
+    public List<Trip> findByPeriod(final String start, final String end) {
+        final Map<String, AttributeValue> eav = new HashMap<String, AttributeValue>();
+        eav.put(":val1", new AttributeValue().withS(start));
+        eav.put(":val2", new AttributeValue().withS(end));
+
+        final DynamoDBScanExpression scanExpression = new DynamoDBScanExpression()
+                .withFilterExpression("date between :val1 and :val2")
+                .withExpressionAttributeValues(eav);
+
+        final List<Trip> trips = new ArrayList<Trip>();
+        trips.addAll(mapper.scan(Trip.class, scanExpression));
+
+        return trips;
+    }
+
+    public List<Trip> findByCountry(final String country) {
+        final Map<String, AttributeValue> eav = new HashMap<String, AttributeValue>();
+        eav.put(":val1", new AttributeValue().withS(country));
+
+        final DynamoDBQueryExpression<Trip> queryExpression = new DynamoDBQueryExpression<Trip>()
+                .withKeyConditionExpression("country = :val1")
+                .withExpressionAttributeValues(eav);
+
+        final List<Trip> trips = mapper.query(Trip.class, queryExpression);
+
+        return trips;
+    }
+
+    public List<Trip> findByCity(final String country, final String city) {
+        final Map<String, AttributeValue> eav = new HashMap<String, AttributeValue>();
+        eav.put(":val1", new AttributeValue().withS(country));
+        eav.put(":val2", new AttributeValue().withS(city));
+
+        final DynamoDBQueryExpression<Trip> queryExpression = new DynamoDBQueryExpression<Trip>()
+                .withKeyConditionExpression("country = :val1 and city = :val2")
+                .withExpressionAttributeValues(eav);
+
+        final List<Trip> trips = mapper.query(Trip.class, queryExpression);
+
+        return trips;
+    }
 
 }
