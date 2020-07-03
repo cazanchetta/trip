@@ -1,7 +1,9 @@
 # FIAP - Serverless: Trabalho Final
 
 **Turma:** 35SCJ
+
 **Professor:** Peterson Larentis
+
 **Grupo:**
 * 335232 - Carlos Zanchetta
 * 335798 - Victor Hugo
@@ -83,7 +85,7 @@
     --s3-bucket $BUCKET_NAME
     ```
 
-3. Iniciar o Cloud Formation para criar nossos recursos na **_AWS_**:
+3. Iniciar o **_Cloud Formation_** para criar nossos recursos na **_AWS_**:
     ```shell script
     sam deploy \
     --template-file packaged.yaml \
