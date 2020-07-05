@@ -18,7 +18,7 @@ Resources:
   CreateTripRecordFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://fiap-servless-trip-35scj/d90cf10fe8509b7647b533efa72e0df8
+      CodeUri: s3://fiap-servless-trip-35scj/9bccc88d5a5fbc57734164d03b3ccbea
       Handler: br.com.trip.handler.CreateTripRecord::handleRequest
       Runtime: java8
       Policies:
@@ -34,7 +34,7 @@ Resources:
   GetTripRecordsByPeriodFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://fiap-servless-trip-35scj/d90cf10fe8509b7647b533efa72e0df8
+      CodeUri: s3://fiap-servless-trip-35scj/9bccc88d5a5fbc57734164d03b3ccbea
       Handler: br.com.trip.handler.GetTripRecordsByPeriod::handleRequest
       Runtime: java8
       Policies:
@@ -53,7 +53,7 @@ Resources:
   GetTripRecordsByCountryFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://fiap-servless-trip-35scj/d90cf10fe8509b7647b533efa72e0df8
+      CodeUri: s3://fiap-servless-trip-35scj/9bccc88d5a5fbc57734164d03b3ccbea
       Handler: br.com.trip.handler.GetTripRecordsByCountry::handleRequest
       Runtime: java8
       Policies:
@@ -69,7 +69,7 @@ Resources:
   GetTripRecordsByCityFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://fiap-servless-trip-35scj/d90cf10fe8509b7647b533efa72e0df8
+      CodeUri: s3://fiap-servless-trip-35scj/9bccc88d5a5fbc57734164d03b3ccbea
       Handler: br.com.trip.handler.GetTripRecordsByCity::handleRequest
       Runtime: java8
       Policies:
@@ -80,7 +80,7 @@ Resources:
         GetTripRecordsByCity:
           Type: Api
           Properties:
-            Path: /study/{country}/findByCity
+            Path: /trip/{country}/findByCity
             Method: get
             RequestParameters:
             - method.request.querystring.city
@@ -88,6 +88,7 @@ Resources:
     Type: AWS::DynamoDB::Table
     Properties:
       TableName: trip
+      BillingMode: PAY_PER_REQUEST
       AttributeDefinitions:
       - AttributeName: country
         AttributeType: S
@@ -109,7 +110,6 @@ Resources:
           KeyType: RANGE
         Projection:
           ProjectionType: ALL
-      BillingMode: PAY_PER_REQUEST
 Outputs:
   CreateTripRecordFunction:
     Description: CreateTripRecord Lambda Function ARN
