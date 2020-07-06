@@ -27,7 +27,7 @@ public class TripRepository {
         eav.put(":val2", new AttributeValue().withS(end));
 
         final DynamoDBScanExpression scanExpression = new DynamoDBScanExpression()
-                .withFilterExpression("date between :val1 and :val2")
+                .withFilterExpression("dateTrip between :val1 and :val2")
                 .withExpressionAttributeValues(eav);
 
         final List<Trip> trips = new ArrayList<Trip>();

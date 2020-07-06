@@ -14,8 +14,8 @@ public class Trip {
     @DynamoDBIndexRangeKey(attributeName = "city", localSecondaryIndexName = "cityIndex")
     private String city;
 
-    @DynamoDBRangeKey(attributeName = "date")
-    private String date;
+    @DynamoDBRangeKey(attributeName = "dateTrip")
+    private String dateTrip;
 
     @DynamoDBAttribute(attributeName = "reason")
     private String reason;
@@ -24,7 +24,7 @@ public class Trip {
         super();
         this.country = country;
         this.city = city;
-        this.date = date;
+        this.dateTrip = date;
         this.reason = reason;
     }
 
@@ -48,12 +48,12 @@ public class Trip {
         this.city = city;
     }
 
-    public String getDate() {
-        return date;
+    public String getDateTrip() {
+        return dateTrip;
     }
 
     public void setDate(String date) {
-        this.date = date;
+        this.dateTrip = date;
     }
 
     public String getReason() {

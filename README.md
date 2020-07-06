@@ -40,11 +40,11 @@
     --table-name trip \
     --attribute-definitions \
         AttributeName=country,AttributeType=S \
-        AttributeName=date,AttributeType=S \
+        AttributeName=dateTrip,AttributeType=S \
         AttributeName=city,AttributeType=S \
     --key-schema \
         AttributeName=country,KeyType=HASH \
-        AttributeName=date,KeyType=RANGE  \
+        AttributeName=dateTrip,KeyType=RANGE  \
     --local-secondary-indexes \
         'IndexName=cityIndex,KeySchema=[{AttributeName=country,KeyType=HASH},{AttributeName=city,KeyType=RANGE}],Projection={ProjectionType=ALL}' \
     --billing-mode PAY_PER_REQUEST \
@@ -80,15 +80,15 @@
 2. Empacotar a aplicação e disponibilizá-la no **_Bucket S3_**:
     ```shell script
     sam package \
-    --template-file template.yaml \
-    --output-template-file packaged.yaml \
+    --template-file /home/nonatorw/Estudos/repos/trip/template.yaml \
+    --output-template-file /home/nonatorw/Estudos/repos/trip/packaged.yaml \
     --s3-bucket $BUCKET_NAME
     ```
 
 3. Iniciar o **_Cloud Formation_** para criar nossos recursos na **_AWS_**:
     ```shell script
     sam deploy \
-    --template-file packaged.yaml \
+    --template-file /home/nonatorw/Estudos/repos/trip/packaged.yaml \
     --stack-name trip \
     --capabilities CAPABILITY_IAM
     ```

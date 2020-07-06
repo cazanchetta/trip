@@ -57,5 +57,4 @@ build/
 *.orig
 
 ### others ###
-~$commerce.docx
-
+*.db
