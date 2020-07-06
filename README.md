@@ -80,15 +80,17 @@
 2. Empacotar a aplicação e disponibilizá-la no **_Bucket S3_**:
     ```shell script
     sam package \
-    --template-file /home/nonatorw/Estudos/repos/trip/template.yaml \
-    --output-template-file /home/nonatorw/Estudos/repos/trip/packaged.yaml \
+    --template-file template.yaml \
+    --output-template-file packaged.yaml \
     --s3-bucket $BUCKET_NAME
     ```
 
 3. Iniciar o **_Cloud Formation_** para criar nossos recursos na **_AWS_**:
     ```shell script
     sam deploy \
-    --template-file /home/nonatorw/Estudos/repos/trip/packaged.yaml \
+    --template-file packaged.yaml \
     --stack-name trip \
-    --capabilities CAPABILITY_IAM
+    --capabilities CAPABILITY_IAM \
+    --s3-bucket $BUCKET_NAME \
+    --region us-east-1
     ```

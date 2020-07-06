@@ -101,8 +101,6 @@ Resources:
           AttributeType: S
         - AttributeName: dateTrip
           AttributeType: S
-        - AttributeName: reason
-          AttributeType: S
       KeySchema:
         - AttributeName: country
           KeyType: HASH
@@ -141,6 +139,6 @@ Outputs:
     Description: GetCityRecordsByCity Lambda Function ARN
     Value:
       Fn::GetAtt:
-        - GetCityRecordsByCityFunction
+        - GetTripRecordsByCityFunction
         - Arn
      

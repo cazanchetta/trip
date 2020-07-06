@@ -1,6 +1,5 @@
 package br.com.trip.model;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBIndexRangeKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBRangeKey;
@@ -17,15 +16,11 @@ public class Trip {
     @DynamoDBRangeKey(attributeName = "dateTrip")
     private String dateTrip;
 
-    @DynamoDBAttribute(attributeName = "reason")
-    private String reason;
-
     public Trip(String country, String city, String date, String reason) {
         super();
         this.country = country;
         this.city = city;
         this.dateTrip = date;
-        this.reason = reason;
     }
 
     public Trip() {
@@ -52,16 +47,7 @@ public class Trip {
         return dateTrip;
     }
 
-    public void setDate(String date) {
-        this.dateTrip = date;
+    public void setDateTrip(String dateTrip) {
+        this.dateTrip = dateTrip;
     }
-
-    public String getReason() {
-        return reason;
-    }
-
-    public void setReason(String reason) {
-        this.reason = reason;
-    }
-
 }
